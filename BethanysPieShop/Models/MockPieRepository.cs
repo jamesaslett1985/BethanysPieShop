@@ -37,7 +37,7 @@ namespace BethanysPieShop.Models
             return _pies;
         }
 
-        //gets the first pi with an id that matches the pieID input
+        //gets the first pie with an id that matches the pieID input
         public Pie GetPieById(int pieId)
         {
             return _pies.FirstOrDefault(p => p.Id == pieId);
