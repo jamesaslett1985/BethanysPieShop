@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BethanysPieShop.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +22,7 @@ namespace BethanysPieShop
             services.AddControllersWithViews();
 
             //register our own services
+            services.AddScoped<IPieRepository, MockPieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
