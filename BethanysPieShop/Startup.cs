@@ -32,20 +32,22 @@ namespace BethanysPieShop
                 and a component to compress the response going back to the client should be added before the use static files component, otherwise the static files would not be compressed
                 */
 
-                app.UseDeveloperExceptionPage(); //gives useful error messaging
+                app.UseDeveloperExceptionPage(); //gives useful error page
                 app.UseStatusCodePages(); //gives useful status codes, eg: 404
-                app.UseStaticFiles(); //use of static files eg: images
-                app.UseEndpoints(endpoints => //enables routing to correct endpoint in the application
-                { });
             }
+   
+            app.UseHttpsRedirection(); //redirects Http to Https
+            app.UseStaticFiles(); //use of static files eg: images, JS, CSS etc. By default this will look for wwwroot folder
 
-            app.UseRouting();
+            app.UseRouting(); //UseRouting and UseEndpoints enable MVC to repond to incoming requests
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    endpoints.MapControllerRoute(
+                        name: "default",
+                        pattern: "{controller=Home}/{action=Index}/{id?}");
                 });
             });
         }
