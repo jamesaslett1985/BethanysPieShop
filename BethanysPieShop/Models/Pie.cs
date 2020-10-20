@@ -7,13 +7,15 @@ namespace BethanysPieShop.Models
 {
     public class Pie
     {
-        public int Id { get; set; }
+        public int PieId { get; set; }
 
         public string Name { get; set; }
 
         public string ShortDescription { get; set; }
 
         public string LongDescription { get; set; }
+
+        public string AllergyInformation { get; set; }
 
         public decimal Price { get; set; }
 
@@ -23,5 +25,10 @@ namespace BethanysPieShop.Models
 
         public bool IsPieOfTheWeek { get; set; }
 
+        public bool InStock { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public Category Category { get; set; }
     }
 }
