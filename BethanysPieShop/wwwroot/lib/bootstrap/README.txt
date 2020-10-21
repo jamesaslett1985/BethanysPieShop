@@ -1,0 +1,1 @@
+﻿Imported Bootstrap by right clicking project > Add > Client-Side Library. Don't add client-side packages via NuGet

@@ -1,0 +1,1 @@
+﻿A view model is a class that contains all the data for a view, and the controller will build up that view model and pass it to the view

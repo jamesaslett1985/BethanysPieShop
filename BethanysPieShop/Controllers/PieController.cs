@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BethanysPieShop.Models;
+using BethanysPieShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BethanysPieShop.Controllers
@@ -24,8 +25,11 @@ namespace BethanysPieShop.Controllers
         //action method - should be public
         public ViewResult List()
         {
-            ViewBag.CurrentCategory = "Cheese cakes"; //ViewBag is a dynamic object used to transfer temporary data (not included in model) from Controller to View. View Model is a better approach
-            return View(_pieRepository.AllPies); //returns all pies to the List view
+            //ViewBag.CurrentCategory = "Cheese cakes"; //ViewBag is a dynamic object used to transfer temporary data (not included in model) from Controller to View. View Model is a better approach
+            PiesListViewModel piesListViewModel = new PiesListViewModel(); //news up instance of PiesListViewModel
+            piesListViewModel.Pies = _pieRepository.AllPies; //assigns _pieRepository to piesListViewModel to return all pies from MockCategoryRepository
+            piesListViewModel.CurrentCategory = "Cheese cakes"; //assigns string to the CurrentCategory property in PiesListViewModel
+            return View(piesListViewModel);
         }
     }
 }
