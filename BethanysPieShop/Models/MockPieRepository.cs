@@ -22,7 +22,7 @@ namespace BethanysPieShop.Models
 
         public IEnumerable<Pie> PiesOfTheWeek { get; }
 
-        //gets first pi that matches id passed in
+        //returns first pie that matches the given Id
         public Pie GetPieById(int pieId)
         {
             return AllPies.FirstOrDefault(p => p.PieId == pieId);

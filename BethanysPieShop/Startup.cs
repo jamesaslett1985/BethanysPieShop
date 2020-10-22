@@ -28,12 +28,17 @@ namespace BethanysPieShop
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //gets defaultconnection parameters from appsettings.json
-            services.AddScoped<IPieRepository, MockPieRepository>(); //registers our service with its interface 
-            services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+
+            //MOCK REPOSITORIES
+            //services.AddScoped<IPieRepository, MockPieRepository>(); //registers our service with its interface 
+            //services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+
+            //REAL REPOSITORIES
+            services.AddScoped<IPieRepository, PieRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             services.AddControllersWithViews();
 
             //services.AddSingleton- creates a single instance for the entire application and reuse it
