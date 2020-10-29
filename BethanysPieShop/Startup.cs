@@ -62,9 +62,9 @@ namespace BethanysPieShop
             app.UseHttpsRedirection(); //redirects Http to Https
             app.UseStaticFiles(); //use of static files eg: images, JS, CSS etc. By default this will look for wwwroot folder
 
-            app.UseRouting(); //UseRouting and UseEndpoints enable MVC to repond to incoming requests
+            app.UseRouting(); //Enables convention-based routing
 
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints => //where we register our endpoints
             {
                 endpoints.MapControllerRoute(
                     name: "default",

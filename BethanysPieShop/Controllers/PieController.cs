@@ -31,6 +31,14 @@ namespace BethanysPieShop.Controllers
             piesListViewModel.CurrentCategory = "Cheese cakes"; //assigns string to the CurrentCategory property in PiesListViewModel
             return View(piesListViewModel);
         }
+
+        public IActionResult Details (int id)
+        {
+            var pie = _pieRepository.GetPieById(id);
+            if (pie == null)
+                return NotFound();
+            return View(pie);
+        }
     }
 }
 
