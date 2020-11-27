@@ -1,5 +1,5 @@
 ﻿@model PiesListViewModel
-@*specifices that the model for this view is PiesListViewModel*@
+@*specifices that the View model for this view is PiesListViewModel*@
 
 <h1>@Model.CurrentCategory</h1> @*even though CurrentCategory lives in piesListViewModel, we use 'Model', as it can be accessed via the Model propert*@
 @foreach (var pie in Model.Pies) /*iterates over Pies in the Model */

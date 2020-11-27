@@ -17,6 +17,7 @@ namespace BethanysPieShop.Models
         //these are the DBsets that we want AppDbContext to manage
         public DbSet<Pie> Pies { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         //we connect to the DB using connection strings in appsettings.json
 

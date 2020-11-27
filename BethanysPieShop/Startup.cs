@@ -38,7 +38,9 @@ namespace BethanysPieShop
             //REAL REPOSITORIES
             services.AddScoped<IPieRepository, PieRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddHttpContextAccessor();
+            services.AddSession();
             services.AddControllersWithViews();
 
             //services.AddSingleton- creates a single instance for the entire application and reuse it
@@ -61,6 +63,7 @@ namespace BethanysPieShop
 
             app.UseHttpsRedirection(); //redirects Http to Https
             app.UseStaticFiles(); //use of static files eg: images, JS, CSS etc. By default this will look for wwwroot folder
+            app.UseSession(); //should be called before UseRouting
 
             app.UseRouting(); //Enables convention-based routing
 
