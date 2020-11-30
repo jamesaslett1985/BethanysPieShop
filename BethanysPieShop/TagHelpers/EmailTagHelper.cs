@@ -1,0 +1,17 @@
+﻿using Microsoft.AspNetCore.Razor.TagHelpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace BethanysPieShop.TagHelpers
+{
+    public class EmailTagHelper : TagHelper //a tag helper needs to inherit from the base TagHelper class
+    {
+        public string Address { get; set; }
+
+        public string Content { get; set; }
+
+
+    }
+}
