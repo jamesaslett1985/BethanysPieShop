@@ -12,6 +12,11 @@ namespace BethanysPieShop.TagHelpers
 
         public string Content { get; set; }
 
-
+        public override void Process(TagHelperContext context, TagHelperOutput output)
+        {
+            output.TagName = "a";
+            output.Attributes.SetAttribute("href", "mailto:" + Address);
+            output.Content.SetContent(Content);
+        }
     }
 }
