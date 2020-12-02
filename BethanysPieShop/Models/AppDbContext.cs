@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShop.Models
 {
-    public class AppDbContext : DbContext //should inherit from DbContext class as default
+    public class AppDbContext : IdentityDbContext<IdentityUser> //should inherit from DbContext class as default
     {
         //A DbContext must have an instance of DbContextOptions for it to execute, so we've specified it here in the contructor
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)

@@ -7,6 +7,7 @@ using BethanysPieShop.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,8 @@ namespace BethanysPieShop
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //gets defaultconnection parameters from appsettings.json
 
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+
             //MOCK REPOSITORIES
             //services.AddScoped<IPieRepository, MockPieRepository>(); //registers our service with its interface 
             //services.AddScoped<ICategoryRepository, MockCategoryRepository>();
@@ -43,6 +46,7 @@ namespace BethanysPieShop
             services.AddHttpContextAccessor();
             services.AddSession();
             services.AddControllersWithViews();
+            services.AddRazorPages();
 
             //services.AddSingleton- creates a single instance for the entire application and reuse it
             //services.AddTransient - creates new instance every time it is called
@@ -67,12 +71,15 @@ namespace BethanysPieShop
             app.UseSession(); //should be called before UseRouting
 
             app.UseRouting(); //Enables convention-based routing
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints => //where we register our endpoints
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
